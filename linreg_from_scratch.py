@@ -11,14 +11,20 @@ bias = random.gauss(0,1)
 
 learning_rate =  1e-3 #same as 0.001 (1*10^(-3))
 
-for epoch in range(1000):
+num_epochs=1000
+
+for epoch in range(num_epochs):
     for input,target in data:
         activation = input*weight+bias
-        #loss = (activation-target)**2
         weight_grad = 2*(activation-target) * input
         bias_grad = 2*(activation-target)
         weight-=learning_rate*weight_grad
         bias-=learning_rate*bias_grad
 
-print("Ground truth:",a,b)
-print("Model estimates:",weight,bias)
+loss_sum=0
+
+for input,target in data:
+    loss = (input*weight+bias-target)**2
+    loss_sum+=loss
+
+print("Average loss:",loss_sum/data_length)
