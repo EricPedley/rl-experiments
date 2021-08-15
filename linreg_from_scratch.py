@@ -9,9 +9,9 @@ data = [(x,x*a+b+(random.random()-0.5)*noise_level) for x in range(data_length)]
 weight = random.gauss(0,1)
 bias = random.gauss(0,1)
 
-learning_rate =  1e-4 #same as 0.0001 (1*10^(-4))
+learning_rate =  1e-3 #same as 0.001 (1*10^(-3))
 
-for epoch in range(100):
+for epoch in range(1000):
     for input,target in data:
         activation = input*weight+bias
         #loss = (activation-target)**2
